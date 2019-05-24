@@ -1,4 +1,3 @@
-import MarsRoverState from "constants/interfaces/MarsRoverState";
 import { Action } from "constants/interfaces/Action";
 
 export const ACTION_TYPES = {
@@ -8,18 +7,10 @@ export const ACTION_TYPES = {
 
 const actions = {
   [ACTION_TYPES.SELECT_ROVER]: (state: Object, action: Action) => {
-    const teams = { ...state, rover: action.payload  };
-    return {
-      ...state,
-      teams,
-    };
+    return { ...state, rover: action.payload  };
   },
   [ACTION_TYPES.SELECT_SOL]: (state: Object, action: Action) => {
-    const teams = { ...state, sol: action.payload  };
-    return {
-      ...state,
-      teams,
-    };
+    return {...state, sol: action.payload  };
   },
 };
 

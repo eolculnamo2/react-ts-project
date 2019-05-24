@@ -1,9 +1,6 @@
 import React from 'react';
 import MarsRoverState from '../../constants/interfaces/MarsRoverState';
-
-const initialState: MarsRoverState = {
-  apiData: [],
-}
+import initialState from './initialState';
 
 const MarsRoverContext = React.createContext<MarsRoverState>(initialState);
 
