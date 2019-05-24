@@ -1,7 +1,6 @@
 import React from 'react';
-import MarsRoverState from '../../constants/interfaces/MarsRoverState';
 import initialState from './initialState';
 
-const MarsRoverContext = React.createContext<MarsRoverState>(initialState);
+const MarsRoverContext = React.createContext<any>(initialState);
 
 export default MarsRoverContext;
