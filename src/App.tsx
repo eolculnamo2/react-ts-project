@@ -5,7 +5,7 @@ import reducer from './context/mars-rover/reducer';
 import initialState from './context/mars-rover/initialState';
 import './App.css';
 
-function App() {
+function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (

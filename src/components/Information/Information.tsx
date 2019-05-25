@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Information() {
+function Information(): JSX.Element {
   return (
     <div>
       <h1>Mars Rover Photos</h1>

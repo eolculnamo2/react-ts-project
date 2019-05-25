@@ -1,4 +1,6 @@
 export default interface ButtonProps {
-  label: string,
-  fx: Function
+  children: string,
+  func: (...args: any) => any,
+  type?: string,
+  value: string | Array<string>,
 }
