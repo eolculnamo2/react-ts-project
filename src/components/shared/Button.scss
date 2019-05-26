@@ -1,0 +1,35 @@
+.c-Button {
+ padding: 1em;
+ margin-right: 1em;
+ width: 100%;
+ background-color: #dadada;
+ cursor: pointer;
+ outline: none;
+ margin-bottom: .5em;
+
+ @media(min-width: 700px) {
+  width: 200px;
+  margin-bottom: 0;
+ }
+
+ &:hover {
+   opacity: .8;
+ }
+
+ &--selected {
+   background-color: #afffbe;
+ }
+
+ &--search {
+   background-color: #afd2ff;
+ }
+
+ &--disabled {
+   background-color: #999;
+
+   &:hover {
+     opacity: 1;
+     cursor: not-allowed;
+   }
+ }
+}

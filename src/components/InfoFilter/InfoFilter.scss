@@ -1,0 +1,37 @@
+.c-InfoFilter__wrap {
+  max-width: 700px;
+  margin: auto;
+  border: 1px solid #dadada;
+  padding: 1em;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.c-InfoFilter__overview {
+  display: flex;
+  justify-content: space-between;
+  max-width:350px;
+  margin: auto;
+}
+
+.c-InfoFilter__select {
+  display: block;
+  width: 200px;
+  height: 35px;
+  background-color: #dadada;
+  cursor: pointer;
+  outline: none;
+}
+
+.c-InfoFilter__param {
+  margin: 1em 0;
+}
+
+.c-InfoFilter__input {
+  min-width: 150px;
+  border-radius: 3px;
+  border: 1px solid #333;
+  background-color: #dadada;
+  padding: .5em 1em;
+  outline: none;
+}

@@ -2,8 +2,10 @@ import MarsRoverState from '../../constants/interfaces/MarsRoverState';
 
 const initialState: MarsRoverState = {
   apiData: [],
-  rover: '',
-  sol: null,
+  cam: 'all',
+  rover: 'curiosity',
+  sol: 1,
+  validRover: false,
 }
 
 export default initialState;

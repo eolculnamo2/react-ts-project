@@ -60,4 +60,6 @@ function Photo(props: iPhoto): JSX.Element {
   )
 }
 
+//Photo.defaultProps
+
 export default Photo;
