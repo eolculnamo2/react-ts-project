@@ -1,0 +1,9 @@
+.c-App__wrap {
+  max-width: 1280px;
+  margin: 4em auto;
+  font-size: 12px; // Set base px value
+
+  @media (min-width: 800px) {
+    font-size: 16px;
+  }
+}

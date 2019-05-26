@@ -23,7 +23,7 @@ function InfoFilter(): JSX.Element {
   const { rover, sol } = context.state;
   return (
     <div>
-      <div>Sol: {sol}</div>
+      <div>Sol:</div>
       <input
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => handleInput(e, ACTION_TYPES.SELECT_SOL)}
         type="number"
