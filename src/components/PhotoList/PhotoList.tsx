@@ -18,6 +18,7 @@ function PhotoList(): JSX.Element {
                 img_src={x.img_src}
               />
       })}
+      {photos && !photos.length && <div>No results. Please try a different sol or rover.</div>}
     </div>
   )
 }

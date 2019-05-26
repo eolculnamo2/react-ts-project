@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import iPhoto from 'constants/interfaces/iPhoto';
 import './Photo.scss';
 
@@ -6,6 +6,9 @@ function Photo(props: iPhoto): JSX.Element {
   const { camera, earth_date, img_src } = props;
   const elementRef: React.RefObject<HTMLDivElement> = React.createRef();
   const imgRef: React.RefObject<HTMLImageElement> = React.createRef();
+  const body = document.body;
+
+  const [selected, toggleSelected] = useState(false);
 
   useEffect(() => {
 
@@ -24,14 +27,29 @@ function Photo(props: iPhoto): JSX.Element {
     }
   }, [])
 
+  const toggle = () => {
+    toggleSelected(!selected);
+
+    // prevent scroll when selected.
+    if(!selected) {
+      body.style.overflow = 'hidden';
+    } else  {
+      body.style.overflow = 'auto';
+    }
+  }
+
 
   return (
-    <div className="c-Photo__thumbnail" ref={elementRef}>
+    <div
+      className={selected ? 'c-Photo__thumbnail c-Photo__thumbnail--selected' : 'c-Photo__thumbnail'}
+      onClick={toggle}
+      ref={elementRef}
+    >
       <h3 className="c-Photo__header">Camera: </h3>
       <span>{camera.full_name}</span>
       <div className="c-Photo__margin">
         <h3 className="c-Photo__header">Date Taken: </h3>
-        <div>{earth_date}</div>
+        <span>{earth_date}</span>
       </div>
       <img
         alt={camera.full_name}
