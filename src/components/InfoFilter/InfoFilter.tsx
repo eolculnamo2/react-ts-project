@@ -18,7 +18,6 @@ function InfoFilter(): JSX.Element {
   const fetchApi = async (sol: string, rover: string) => {
     const data = await marsRoverData(sol, rover);
     context.dispatch({type: ACTION_TYPES.UPDATE_API_DATA, payload: data});
-    console.log(context.state);
   }
 
   const { rover, sol } = context.state;
