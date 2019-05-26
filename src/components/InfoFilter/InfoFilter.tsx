@@ -11,8 +11,14 @@ function InfoFilter(): JSX.Element {
     context.dispatch({type, payload: e.target.value});
   }
 
-  const handleClick = (type: string, newRover: string) => {
+  const selectRover = (type: string, newRover: string) => {
     context.dispatch({type, payload: newRover});
+  }
+
+  const fetchApi = async (sol: string, rover: string) => {
+    const data = await marsRoverData(sol, rover);
+    context.dispatch({type: ACTION_TYPES.UPDATE_API_DATA, payload: data});
+    console.log(context.state);
   }
 
   const { rover, sol } = context.state;
@@ -25,28 +31,28 @@ function InfoFilter(): JSX.Element {
       />
       <div>Rover: {rover}</div>
       <Button
-        func={handleClick}
+        func={selectRover}
         type={ACTION_TYPES.SELECT_ROVER}
         value={'curiosity'}
       >
         Curiosity
       </Button>
       <Button
-        func={handleClick}
+        func={selectRover}
         type={ACTION_TYPES.SELECT_ROVER}
         value={'opportunity'}
       >
         Opportunity
       </Button>
       <Button
-        func={handleClick}
+        func={selectRover}
         type={ACTION_TYPES.SELECT_ROVER}
         value={'spirit'}
       >
         Spirit
       </Button>
       <Button
-        func={marsRoverData}
+        func={fetchApi}
         value={[sol, rover]}
       >
         Search
