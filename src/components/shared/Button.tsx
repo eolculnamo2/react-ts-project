@@ -9,7 +9,6 @@ function Button(props: ButtonProps): JSX.Element {
   const {
           children,
           func,
-          type,
           value,
         } = props;
 
@@ -18,12 +17,11 @@ function Button(props: ButtonProps): JSX.Element {
 
   const handleClick = () => {
     const { name } = func;
-
     // Learning experience from this project: Passing functions
     // to a Button attribute with TypeScript can get messy.
-    if(name === 'selectRover' && typeof value === 'string' && type) {
-      func(type, value);
-    } else if(name === 'fetchApi' && Array.isArray(value) && !type) {
+    if(name === 'selectRover' && typeof value === 'string') {
+      func(value);
+    } else if(name === 'fetchApi' && Array.isArray(value)) {
       const [sol, rover, cam] = value;
         func(sol,rover, cam);
     }
@@ -32,12 +30,9 @@ function Button(props: ButtonProps): JSX.Element {
   const getButtonClass = (): string => {
     if(typeof value === 'string' && value === rover) {
       return ' c-Button--selected';
+    } else if(children === 'Search' && (!rover || !sol)) {
+      return ' c-Button--disabled';
     } else if(children === 'Search') {
-
-      if(!rover || !sol) {
-        return ' c-Button--disabled';
-      }
-
       return ' c-Button--search';
     }
     return '';
@@ -58,14 +53,12 @@ function Button(props: ButtonProps): JSX.Element {
 Button.defaultProps = {
   children: 'button',
   func: () => null,
-  type: '',
   value: '',
 }
 
 Button.propTypes = {
   children: PropTypes.string,
   func: PropTypes.func,
-  type: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array

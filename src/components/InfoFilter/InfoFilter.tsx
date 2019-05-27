@@ -24,8 +24,8 @@ function InfoFilter(): JSX.Element {
     context.dispatch({type, payload: e.target.value});
   }
 
-  const selectRover = (type: string, newRover: string) => {
-    context.dispatch({type, payload: newRover});
+  const selectRover = (newRover: string) => {
+    context.dispatch({type: ACTION_TYPES.SELECT_ROVER, payload: newRover});
   }
 
   const fetchApi = async (sol: string, rover: string, cam: string) => {
@@ -68,7 +68,7 @@ function InfoFilter(): JSX.Element {
                       >
                         {camName}
                       </option>
-                      )
+                    )
             })}
           </select>
         </div>
@@ -77,21 +77,18 @@ function InfoFilter(): JSX.Element {
         <div>Select Rover:</div>
         <Button
           func={selectRover}
-          type={ACTION_TYPES.SELECT_ROVER}
           value={'curiosity'}
         >
           Curiosity
         </Button>
         <Button
           func={selectRover}
-          type={ACTION_TYPES.SELECT_ROVER}
           value={'opportunity'}
         >
           Opportunity
         </Button>
         <Button
           func={selectRover}
-          type={ACTION_TYPES.SELECT_ROVER}
           value={'spirit'}
         >
           Spirit
