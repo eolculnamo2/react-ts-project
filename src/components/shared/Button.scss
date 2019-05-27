@@ -6,9 +6,10 @@
  cursor: pointer;
  outline: none;
  margin-bottom: .5em;
+ border: 1px solid #333;
 
  @media(min-width: 700px) {
-  width: 200px;
+  width: 31%;
   margin-bottom: 0;
  }
 
@@ -22,6 +23,11 @@
 
  &--search {
    background-color: #afd2ff;
+   margin: auto;
+   display: block;
+   @media(min-width: 700px) {
+    width: 300px;
+   }
  }
 
  &--disabled {

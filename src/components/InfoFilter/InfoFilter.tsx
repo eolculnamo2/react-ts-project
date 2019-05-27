@@ -13,12 +13,12 @@ function InfoFilter(): JSX.Element {
   useEffect(() => {
     // Make initial call so that page is not blank to the user on load.
     fetchApi(sol,rover,cam);
-  }, [])
+  }, []);
 
   useEffect(() => {
     context.dispatch({type: ACTION_TYPES.UPDATE_VALID_ROVER, payload: isValidRover()})
     context.dispatch({type: ACTION_TYPES.UPDATE_CAM, payload: 'all'})
-  }, [rover])
+  }, [rover]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
     context.dispatch({type, payload: e.target.value});
@@ -41,16 +41,39 @@ function InfoFilter(): JSX.Element {
 
   return (
     <div className="c-InfoFilter__wrap">
-      <div className="c-InfoFilter__param">
-        <div>Select Sol: </div>
-        <input
-          className="c-InfoFilter__input"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInput(e, ACTION_TYPES.SELECT_SOL)}
-          type="number"
-          value={sol}
-        />
+      <h3 className="c-InfoFilter__heading">Parameters</h3>
+      <div className="c-InfoFilter__flex-inps">
+        <div className="c-InfoFilter__param">
+          <div>Select Sol: </div>
+          <input
+            className="c-InfoFilter__input"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInput(e, ACTION_TYPES.SELECT_SOL)}
+            type="number"
+            value={sol}
+          />
+        </div>
+        <div className="c-InfoFilter__param">
+          <div>Select Cam: </div>
+          <select
+            className="c-InfoFilter__select"
+            onChange={addCameraFilter}
+            value={cam}
+          >
+            <option value='all'>All</option>
+            {validRover && roverCams[rover].map((camName: string) => {
+              return (
+                      <option
+                        key={camName}
+                        value={camName}
+                      >
+                        {camName}
+                      </option>
+                      )
+            })}
+          </select>
+        </div>
       </div>
-      <div className="c-InfoFilter__param">
+      <div className="c-InfoFilter__param c-InfoFilter__param--last">
         <div>Select Rover:</div>
         <Button
           func={selectRover}
@@ -73,26 +96,6 @@ function InfoFilter(): JSX.Element {
         >
           Spirit
         </Button>
-      </div>
-      <div className="c-InfoFilter__param">
-        <div>Select Cam: </div>
-        <select
-          className="c-InfoFilter__select"
-          onChange={addCameraFilter}
-          value={cam}
-        >
-          <option value='all'>All</option>
-          {validRover && roverCams[rover].map((camName: string) => {
-            return (
-                    <option
-                      key={camName}
-                      value={camName}
-                    >
-                      {camName}
-                    </option>
-                    )
-          })}
-        </select>
       </div>
       <Button
         func={fetchApi}

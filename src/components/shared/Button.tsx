@@ -14,7 +14,6 @@ function Button(props: ButtonProps): JSX.Element {
         } = props;
 
   const context = useContext(MarsRoverContext);
-
   const { rover, sol } = context.state;
 
   const handleClick = () => {
@@ -49,7 +48,7 @@ function Button(props: ButtonProps): JSX.Element {
       className={'c-Button' + getButtonClass()}
       onClick={handleClick}
       type="button"
-      disabled={!rover || !sol}
+      disabled={(!rover || !sol) && children === 'Search'}
     >
       {children}
     </button>

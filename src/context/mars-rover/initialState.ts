@@ -4,7 +4,7 @@ const initialState: MarsRoverState = {
   apiData: [],
   cam: 'all',
   rover: 'curiosity',
-  sol: 1,
+  sol: 12,
   validRover: false,
 }
 

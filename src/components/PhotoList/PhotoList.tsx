@@ -9,7 +9,7 @@ function PhotoList(): JSX.Element {
 
   const { photos } = context.state.apiData;
   return (
-    <div className={photos && photos.length && "c-PhotoList__wrap"}>
+    <div className="c-PhotoList__wrap">
       {photos && photos.map((x: iPhoto, i: number) => {
         return <Photo
                 key={x.img_src+i}

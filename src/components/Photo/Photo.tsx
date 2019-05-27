@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import iPhoto from 'constants/interfaces/iPhoto';
 import './Photo.scss';
 
@@ -60,6 +61,16 @@ function Photo(props: iPhoto): JSX.Element {
   )
 }
 
-//Photo.defaultProps
+Photo.defaultProps = {
+  camera: {full_name: '' },
+  earth_date: '',
+  img_src: '',
+}
+
+Photo.propTypes = {
+  camera: PropTypes.shape({full_name: PropTypes.string }),
+  earth_date: PropTypes.string,
+  img_src: PropTypes.string,
+}
 
 export default Photo;
