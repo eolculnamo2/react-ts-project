@@ -1,49 +1,22 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonProps from '../../constants/interfaces/ButtonProps';
-import MarsRoverContext from 'context/mars-rover';
 import './Button.scss';
-
 
 function Button(props: ButtonProps): JSX.Element {
   const {
+          btnClass,
           children,
-          func,
-          value,
+          disabled,
+          onClick,
         } = props;
-
-  const context = useContext(MarsRoverContext);
-  const { rover, sol } = context.state;
-
-  const handleClick = () => {
-    const { name } = func;
-    // Learning experience from this project: Passing functions
-    // to a Button attribute with TypeScript can get messy.
-    if(name === 'selectRover' && typeof value === 'string') {
-      func(value);
-    } else if(name === 'fetchApi' && Array.isArray(value)) {
-      const [sol, rover, cam] = value;
-        func(sol,rover, cam);
-    }
-  }
-
-  const getButtonClass = (): string => {
-    if(typeof value === 'string' && value === rover) {
-      return ' c-Button--selected';
-    } else if(children === 'Search' && (!rover || !sol)) {
-      return ' c-Button--disabled';
-    } else if(children === 'Search') {
-      return ' c-Button--search';
-    }
-    return '';
-  }
 
   return (
     <button
-      className={'c-Button' + getButtonClass()}
-      onClick={handleClick}
+      className={'c-Button ' + btnClass + (disabled ? ' c-Button--disabled' : '')}
+      onClick={onClick}
       type="button"
-      disabled={(!rover || !sol) && children === 'Search'}
+      disabled={disabled}
     >
       {children}
     </button>
@@ -51,18 +24,17 @@ function Button(props: ButtonProps): JSX.Element {
 }
 
 Button.defaultProps = {
+  btnClass: '',
   children: 'button',
-  func: () => null,
-  value: '',
+  onClick: () => null,
+  disabled: false,
 }
 
 Button.propTypes = {
+  btnClass: PropTypes.string,
   children: PropTypes.string,
-  func: PropTypes.func,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array
-  ]),
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 }
 
 export default Button;

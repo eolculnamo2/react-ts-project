@@ -1,5 +1,6 @@
 export default interface ButtonProps {
+  btnClass: string,
   children: string,
-  func: (...args: any) => any,
-  value: string | Array<string>,
+  onClick: (...args: any) => any,
+  disabled?: boolean,
 }

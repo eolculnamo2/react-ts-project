@@ -10,14 +10,14 @@ function PhotoList(): JSX.Element {
   const { photos } = context.state.apiData;
   return (
     <div className="c-PhotoList__wrap">
-      {photos && photos.map((x: iPhoto, i: number) => {
-        return <Photo
-                key={x.img_src+i}
-                camera={x.camera}
-                earth_date={x.earth_date}
-                img_src={x.img_src}
-              />
-      })}
+      {photos && photos.map((x: iPhoto, i: number) => (
+        <Photo
+          key={x.img_src+i}
+          camera={x.camera}
+          earth_date={x.earth_date}
+          img_src={x.img_src}
+        />
+      ))}
       {photos && !photos.length && <div>No results. Please try a different sol or rover.</div>}
     </div>
   )

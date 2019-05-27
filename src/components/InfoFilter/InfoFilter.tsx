@@ -60,43 +60,42 @@ function InfoFilter(): JSX.Element {
             value={cam}
           >
             <option value='all'>All</option>
-            {validRover && roverCams[rover].map((camName: string) => {
-              return (
-                      <option
-                        key={camName}
-                        value={camName}
-                      >
-                        {camName}
-                      </option>
-                    )
-            })}
+            {validRover && roverCams[rover].map((camName: string) => (
+              <option
+                key={camName}
+                value={camName}
+              >
+                {camName}
+              </option>
+            ))}
           </select>
         </div>
       </div>
       <div className="c-InfoFilter__param c-InfoFilter__param--last">
         <div>Select Rover:</div>
         <Button
-          func={selectRover}
-          value={'curiosity'}
+          btnClass={rover === 'curiosity' ? 'c-Button--selected' : ''}
+          onClick={() => selectRover('curiosity')}
         >
           Curiosity
         </Button>
         <Button
-          func={selectRover}
-          value={'opportunity'}
+          btnClass={rover === 'opportunity' ? 'c-Button--selected' : ''}
+          onClick={() => selectRover('opportunity')}
         >
           Opportunity
         </Button>
         <Button
-          func={selectRover}
-          value={'spirit'}
+          btnClass={rover === 'spirit' ? 'c-Button--selected' : ''}
+          onClick={() => selectRover('spirit')}
         >
           Spirit
         </Button>
       </div>
       <Button
-        func={fetchApi}
-        value={[sol, rover, cam]}
+        btnClass="c-Button--search"
+        disabled={!rover || !sol}
+        onClick={() => fetchApi(sol,rover,cam)}
       >
         Search
       </Button>
