@@ -14,17 +14,24 @@ function Photo(props: iPhoto): JSX.Element {
   useEffect(() => {
 
     // lazy load images on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach( entry => {
-        const { isIntersecting } = entry;
-        if(isIntersecting && imgRef.current) {
-          imgRef.current.src = img_src;
-        }
-      })
-    });
+    try {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach( entry => {
+          const { isIntersecting } = entry;
+          if(isIntersecting && imgRef.current) {
+            imgRef.current.src = img_src;
+          }
+        })
+      });
 
-    if(elementRef.current) {
-      observer.observe(elementRef.current);
+      if(elementRef.current) {
+        observer.observe(elementRef.current);
+      }
+    } catch(e) {
+      console.log('lazy loading not enabled');
+      if(imgRef.current) {
+        imgRef.current.src = img_src;
+      }
     }
   }, [])
 
