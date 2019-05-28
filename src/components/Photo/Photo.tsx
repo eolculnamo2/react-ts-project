@@ -69,13 +69,13 @@ function Photo(props: iPhoto): JSX.Element {
 }
 
 Photo.defaultProps = {
-  camera: {full_name: '' },
+  camera: { full_name: '' },
   earth_date: '',
   img_src: '',
 }
 
 Photo.propTypes = {
-  camera: PropTypes.shape({full_name: PropTypes.string }),
+  camera: PropTypes.shape({ full_name: PropTypes.string }),
   earth_date: PropTypes.string,
   img_src: PropTypes.string,
 }
